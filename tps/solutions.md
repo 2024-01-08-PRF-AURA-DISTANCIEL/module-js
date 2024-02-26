@@ -179,7 +179,9 @@ if (note >= 90) {
 const montant = parseFloat(prompt("Entrez le montant total des achats:"));
 
 if (montant > 1000) {
-  console.log("Montant après réduction: " + montant * 0.9 + "$");
+  const reduction=montant*0.1;
+  const montantFinal = montant-reduction;
+  console.log("Montant après réduction: " + montantFinal * 0.9 + "$");
 } else {
   console.log("Montant total: " + montant + "$");
 }
