@@ -1,16 +1,26 @@
-// 1. S'assurer que le user ne puisse entrer que des nombres valides. Sinon, il devra ressayer
-// 2. S'assurer que le premier multiplicateur soit toujours inférieur au dernier multiplicateur
+const notes = [];
 
-const nombre = +prompt("Entrez un nombre : ");
+const nombreNotes = +prompt("Combiens de notes souhaitez-vous inserer ?");
 
-let premierMultiplicateur = +prompt("Premier multiplicateur : ");
-let dernierMultiplicateur = +prompt("Dernier multiplicateur : ");
-
-if (premierMultiplicateur > dernierMultiplicateur) {
-  const temp = premierMultiplicateur;
-  premierMultiplicateur = dernierMultiplicateur;
-  dernierMultiplicateur = temp;
+for (let i = 0; i < nombreNotes; i++) {
+  const note = +prompt(`Entrez la note[${i + 1}] : `);
+  notes.push(note);
 }
-for (let i = premierMultiplicateur; i <= dernierMultiplicateur; i++) {
-  console.log(`${nombre} x ${i} = ${nombre * i}`);
+
+// for (let i = 0; i < nombreNotes; i++) {
+//   if (i > 0) {
+//     notes.push(+prompt(`Entrez la ${i + 1}ème note: `));
+//   } else {
+//     notes.push(+prompt(`Entrez la ${i + 1}ère note: `));
+//   }
+// }
+
+let somme = 0;
+for (let note of notes) {
+  somme += note;
 }
+
+alert(`
+ Somme : ${somme}
+ Moyenne : ${somme / notes.length}
+`);
