@@ -1,193 +1,141 @@
 # TPS
 
-1. Écrire un programme qui crée un tableau de 10 entiers aléatoires entre 1 et 100, puis affiche le plus grand et le plus petit élément.
+**TP 1**
+
+1. Complétez le code suivant pour créer une fonction factory inRange
+   qui permet de vérifier si un nombre est compris entre deux bornes :
+
+- **Fonction factory** : C'est la fonction qui va créer toutes les autres fonctions
+  Si les fonctions factories sont possibles, c'est grace au "Currying" qu'on a vu ensemble
 
 ```js
-const tab = [];
-for (let i = 0; i < 10; i++) {
-  tab.push(Math.floor(Math.random() * 100) + 1);
-}
-
-let min = tab[0];
-let max = tab[0];
-for (let i = 1; i < tab.length; i++) {
-  if (tab[i] < min) {
-    min = tab[i];
-  }
-  if (tab[i] > max) {
-    max = tab[i];
-  }
-}
-console.log("Tableaux : ", tab);
-console.log("Min :", min);
-console.log("Max :", max);
-```
-
-2. Créer un tableau contenant les lettres de l'alphabet. Ensuite, demander à l'utilisateur un nombre entre 0 et 25 et afficher la lettre correspondante.
-
-```js
-const alphabet = [];
-const alphabet = "abcdefghijklmnopqrstuvwxyz".split("");
-// for (let i = 0; i < 26; i++) {
-//   alphabet.push(String.fromCharCode(97 + i));
-// }
-
-let indice = parseInt(prompt("Entrez un nombre entre 0 et 25 :"));
-console.log(alphabet[indice]);
-```
-
-3. Écrire un programme qui compare 2 tableaux de taille égale et indique s'ils sont identiques (mêmes valeurs aux mêmes indices). Vous pouvez les créer de maière aléatoire avec Math.random
-
-```js
-const tab1 = [];
-const tab2 = [];
-
-for (let i = 0; i < 5; i++) {
-  tab1.push(Math.random());
-  tab2.push(Math.random());
-}
-
-let identiques = true;
-if (tab1.length === tab2.length) {
-  for (let i = 0; i < tab1.length; i++) {
-    if (tab1[i] !== tab2[i]) {
-      identiques = false;
-      break;
-    }
-  }
-} else {
-  identiques = false;
-}
-console.log(identiques);
-```
-
-4. Créer un tableau de 10 éléments. Calculer et afficher la somme des éléments aux indices pairs et la somme des éléments aux indices impairs.
-
-```js
-const tab = [];
-for (let i = 0; i < 10; i++) {
-  tab.push(Math.random() * 10);
-}
-
-let sommePairs = 0;
-let sommeImpairs = 0;
-for (let i = 0; i < tab.length; i++) {
-  if (i % 2 === 0) {
-    sommePairs += tab[i];
-  } else {
-    sommeImpairs += tab[i];
-  }
-}
-
-console.log("Somme pairs :", sommePairs);
-console.log("Somme impairs :", sommeImpairs);
-```
-
-5. Demander à l'utilisateur de saisir une phrase. Créer un tableau contenant chaque mot de la phrase, puis inverser l'ordre des mots dans le tableau et afficher la nouvelle phrase.
-
-```js
-const mots = prompt("Entrez une phrase :").split(" ");
-const phraseInverse = [];
-
-for (let i = mots.length - 1; i >= 0; i--) {
-  phraseInverse.push(mots[i]);
-}
-
-console.log(phraseInverse.join(" "));
-```
-
-6. Créer deux tableaux de taille aléatoire et fusionner leurs valeurs dans l'ordre alterné dans un nouveau tableau. Par exemple : [1, 2, 3] et [a, b, c] devient [1, a, 2, b, 3, c].
-
-```js
-const taille1 = Math.floor(Math.random() * 5) + 1;
-const taille2 = Math.floor(Math.random() * 5) + 1;
-
-const tab1 = [];
-const tab2 = [];
-
-for (let i = 0; i < taille1; i++) {
-  tab1.push(i + 1);
-}
-
-for (let i = 0; i < taille2; i++) {
-  tab2.push(String.fromCharCode(97 + i));
-}
-
-let tabFusion = [];
-for (let i = 0; i < taille1 || i < taille2; i++) {
-  if (i < taille1) {
-    tabFusion.push(tab1[i]);
-  }
-  if (i < taille2) {
-    tabFusion.push(tab2[i]);
-  }
-}
-console.log("Tableau 1: ", tab1);
-console.log("Tableau 2: ", tab2);
-console.log("Résultat : ", tabFusion);
-```
-
-7. Écrire un programme pour trouver le produit des éléments positifs d'un tableau (ignorer les valeurs négatives et zéro).
-
-```js
-function produitDesElementsPositifs(arr) {
-  const elementsPositifs = arr.filter((element) => element > 0);
-
-  if (elementsPositifs.length === 0) {
-    return 0;
-  }
-
-  const produit = elementsPositifs.reduce((acc, val) => acc * val, 1);
-
-  return produit;
-}
-
-console.log(produitDesElementsPositifs([1, -2, 3, 4, -5, 0, 6])); // Devrait afficher 72 (1 * 3 * 4 * 6)
-console.log(produitDesElementsPositifs([-1, -2, -3, 0])); // Devrait afficher 0 car aucun élément positif
-console.log(produitDesElementsPositifs([2, 5])); // Devrait afficher 10 (2 * 5)
-```
-
-8. On vous donne un tableau d’entiers et un entier k qui représente le nombre de rotations que doit subir le tableau.
-
-Afficher le nouveau tableau après la rotation à droite.
-
-Exigences
-Doit retourner un nouveau tableau
-
-Exemple #1
-Tableau [1, 2, 3, 4, 5]
-Rotations : 3
-Resultat : [3,4,5,1,2]
-
-Exemple #2
-Tableau [1, 2, 3, 4]
-Rotations : 1
-Resultat [ 4,1,2,3 ]
-
-- Proposer une solution avec pop() ou shift()
-- Une solution sans pop() ou shift()
-
-```js
-function rotateArray(array, n) {
-  const newArr = [...array];
-
-  for (let i = 1; i <= n; i++) {
-    const lastElement = newArr.pop();
-    newArr.unshift(lastElement);
-  }
-  return newArr;
+function makeBetweenFunc(min, max) {
+  // Compléter ici
 }
 ```
 
+2. Utilisation, vous pouvez essayer avec des ranges entre `18` et `100`
+   `const inRange = makeBetweenFunc(?, ?);` Completer les `? ?`
+
 ```js
-function rotate(arr, k) {
-  const n = arr.length;
-  const temp = [...arr];
-
-  for (let i = 0; i < n; i++) {
-    arr[(i + k) % n] = temp[i];
-  }
-
-  return arr;
-}
+console.log(inRange(17)); // Doit afficher false
+console.log(inRange(68)); // Doit afficher true
 ```
+
+2. Puis complétez à nouveau le code pour créer une fisNinetiesonction qui vérifie si une année est comprise entre `1900` et `2000` :
+
+```js
+// Nouvelle fonction factory
+const isNineties = makeBetweenFunc(?, ?);
+
+console.log(isNineties(1995)); // Doit afficher true
+```
+
+3. Enfin, complétez une dernière fois le code pour créer une fonction `isNiceWeather` qui vérifie si une température est comprise entre `18` et `23` degrés :
+
+```js
+// Dernière fonction factory
+const isNiceWeather = makeBetweenFunc(?, ?);
+
+console.log(isNiceWeather(20)); // Doit afficher true
+```
+
+4. Expliquer ce que vous avez appris et compris de l'importance du Currying
+
+**TP 2**
+Vous devez coder une fonction getPriceWithTaxes(price, taxRate) qui prend un prix et un taux de TVA `(entre 0 et 1)` et retourne le prix final avec les taxes.
+Par exemple:
+`getPriceWithTaxes(100, 0.2)` doit retourner `120 (100 + 20% de taxes)`
+`getPriceWithTaxes(50, 0.1)` doit retourner `55 (50 + 10% de taxes)`
+Pour cet exercice, vous devez:
+
+1. Coder la fonction `getPriceWithTaxes` de manière classique
+2. Refactorer cette fonction pour utiliser un style `curryfié`
+3. Définir des fonctions réutilisables `getVAT`, `getRegionTax`, etc pour les différents taux de taxes
+4. Appeler ces fonctions `curryfiées(avec le curryingc:D)` pour calculer des prix avec les taxes
+
+**TP3**
+Écrire une méthode Java qui prend en paramètre un tableau 2D, et un nombre.
+
+La méthode devrait nous retourner la valeur correspond au nombre de fois que ce nombre se trouve dans le tableau et ses différentes positions.
+
+Ex :
+
+```js
+maMethode({
+  {1, 4, 2, 1},
+  {6, 3, 8, 9},
+  {1, 5, 1, 0}
+},1)
+> 1 se retrouve 4 fois dans les emplacements suivants : (0,0),(0,3),(2,0),(2,2)
+```
+
+=========================================
+
+**TP4**
+Écrire une méthode Java qui prend en paramètre un tableau de caractères.
+
+Et qui va ensuite retourner un nouveau tableau avec une alternance entre les lettres en Maj et Min.
+
+Ex :
+
+```js
+maMethode(["a", "b", "c", "d", "e"]) > ["a", "B", "c", "D", "e"];
+```
+
+**TP5**
+Écrire un programme Java demande à l’utilisateur de saisir un texte et qui ensuite, et qui ensuite affiche le nombre d’occurence de chaque lettre.
+
+**TP6: Gestionnaire de Bibliothèque**
+
+Créez une classe Book pour représenter un livre avec les propriétés :
+
+- title (titre)
+- author (auteur)
+- genre (genre)
+
+Créez une classe Library qui a une collection de livres et définissez des méthodes pour :
+
+- Ajouter un livre à la bibliothèque
+- Rechercher un livre par titre
+- Rechercher des livres par auteur
+- Rechercher des livres par genre
+- Emprunter un livre (mettre à jour le statut du livre)
+
+===============================================
+**TP7: Gestionnaire de Produits en Ligne**
+
+Créez une classe Product avec les propriétés :
+
+- name (nom)
+- price (prix)
+- quantity (quantité en stock)
+
+Créez une classe ShoppingCart qui permet d'ajouter des produits, de les retirer et de calculer le total. Définissez des méthodes pour :
+
+- Ajouter un produit au panier
+- Retirer un produit du panier
+- Calculer le total du panier
+
+Bien sûr, voici une version améliorée de l'exercice avec des méthodes qui pourraient nécessiter l'utilisation de map pour formater les données sans mentionner explicitement l'utilisation de map :
+
+=========================================================================
+**TP8 : Gestionnaire de Tâches**
+
+Créez une classe Task pour représenter une tâche avec les propriétés suivantes :
+
+- title (titre de la tâche)
+- priority (priorité de la tâche, un entier positif)
+- completed (indicateur si la tâche est terminée, true/false)
+  Créez une classe TaskList qui contient une liste de tâches. Définissez des méthodes pour :
+
+- Ajouter une tâche à la liste
+- Retirer une tâche de la liste
+- Afficher la liste des tâches (afficher le titre, la priorité et l'état)
+- Afficher les tâches triées par priorité (de la plus haute à la plus basse)
+- Afficher les tâches non terminées
+- Calculer le nombre total de tâches non terminées
+- Marquer une tâche comme terminée
+- Formater les titres de tâches en majuscules
+- Formater les priorités pour afficher "Haute", "Moyenne" ou "Basse" en fonction de la priorité numérique
+- Ajoutez une méthode pour afficher les tâches triées par priorité, mais en regroupant les tâches de même priorité ensemble.
