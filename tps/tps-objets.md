@@ -33,7 +33,7 @@ Créez une classe ShoppingCart qui permet d'ajouter des produits, de les retirer
 Bien sûr, voici une version améliorée de l'exercice avec des méthodes qui pourraient nécessiter l'utilisation de map pour formater les données sans mentionner explicitement l'utilisation de map :
 
 =========================================================================
-**TP6 : Gestionnaire de Tâches**
+**TP3 : Gestionnaire de Tâches**
 
 Créez une classe Task pour représenter une tâche avec les propriétés suivantes :
 
@@ -53,7 +53,7 @@ Créez une classe Task pour représenter une tâche avec les propriétés suivan
 - Formater les priorités pour afficher "Haute", "Moyenne" ou "Basse" en fonction de la priorité numérique
 - Ajoutez une méthode pour afficher les tâches triées par priorité, mais en regroupant les tâches de même priorité ensemble.
 
-**TP3**
+**TP4**
 Écrire un programme Java demande à l’utilisateur de saisir un texte et qui ensuite, et qui ensuite affiche le nombre d’occurence de chaque lettre.
 
 - Méthode 1 : Utilisez des tableaux
