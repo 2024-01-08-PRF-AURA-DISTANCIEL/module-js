@@ -1,44 +1,31 @@
-class Book {
-  constructor(title, author, genre) {
-    this.title = title;
-    this.author = author;
-    this.genre = genre;
-  }
+// TP1
+const technos = document.querySelectorAll("li");
+
+const framworks = [
+  "Nest.js",
+  "Spring",
+  "Asp Dotnet Core",
+  "Ruby On Rails",
+  "Angular",
+  "Symfony",
+  "Laravel",
+  "Dynamo",
+];
+
+for (let i = 0; i < technos.length; i++) {
+  technos[i].innerText = framworks[i];
 }
 
-class Library {
-  constructor() {
-    this.books = [];
-  }
-
-  addBook(book) {
-    this.books.push(book);
-  }
-
-  findBookByTitle(title) {
-    return this.books.find((book) => book.title === title);
-  }
-
-  findBookByAuthor(author) {
-    return this.books.filter((book) => book.author === author);
-  }
-
-  findBookByGenre(genre) {
-    return this.books.filter((book) => book.genre === genre);
-  }
-
-  borrowBook(title) {
-    const book = this.findBookByTitle(title);
-    if (book && !book.isBorrowed) {
-      book.isBorrowed = true;
-    }
-  }
+// TP2
+function transformToStartCase(text) {
+  const words = text.replace(/-/g, " ").split(" ");
+  return words
+    .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+    .join(" ");
 }
 
-const bookJs = new Book("JS Ninja", "John Resig", "Tech");
-const bookPhp = new Book("PHP Mysteries", "Chris Lis", "Tech");
-
-const lib = new Library();
-
-lib.addBook(bookJs);
-lib.addBook(bookPhp);
+for (let i = 0; i < technos.length; i++) {
+  technos[i].innerText = `${transformToStartCase(technos[i].className)} - ${
+    technos[i].innerText
+  }`;
+}
