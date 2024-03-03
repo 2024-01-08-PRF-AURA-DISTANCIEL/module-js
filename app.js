@@ -1,21 +1,8 @@
-// const technos = document.querySelectorAll("li");
+const firstNumber = document.querySelector("#first-number");
+const secondNumber = document.querySelector("#second-number");
+const resultButton = document.querySelector("#result-button");
 
-// // for (let i = 0; i < technos.length; i++) {
-// //   console.log(technos[i].innerText);
-// // }
-
-// for (let techno of technos) {
-//   console.log(techno.innerText);
-//   //   techno.innerText = "Spring";
-// }
-
-// const framworks = [
-//   "Nest.js",
-//   "Spring",
-//   "Asp Dotnet Core",
-//   "Ruby On Rails",
-//   "Angular",
-//   "Symfony",
-//   "Laravel",
-//   "Dynamo",
-// ];
+resultButton.addEventListener("click", function () {
+  const resultText = document.querySelector("#result");
+  resultText.innerText = Number(firstNumber.value) + Number(secondNumber.value);
+});
