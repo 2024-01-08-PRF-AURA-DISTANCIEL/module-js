@@ -1,17 +1,21 @@
-// const technos = document.querySelector("#technos");
-const technos = document.getElementById("technos");
+import users from "./users.js";
 
-const frameworks = [
-  "Nest.js",
-  "Spring",
-  "Asp Dotnet Core",
-  "Ruby On Rails",
-  "Angular",
-  "Symfony",
-  "Laravel",
-  "Dynamo",
-];
+const $usersList = document.getElementById("users-list");
 
-for (let framework of frameworks) {
-  technos.innerHTML += `<li>${framework}</li>`;
+for (let user of users) {
+  $usersList.innerHTML += CreateUser(user);
+}
+
+function CreateUser(user) {
+  return `
+    <tr>
+      <td>${user.id}</td>
+      <td>${user.name}</td>
+      <td>${user.email}</td>
+      <td>${user.address.city}</td>
+      <td>${user.phone}</td>
+      <td>${user.company.name}</td>
+      <td><a href="details.html?id=${user.id}">Voir</a></td>
+    </tr>
+  `;
 }
