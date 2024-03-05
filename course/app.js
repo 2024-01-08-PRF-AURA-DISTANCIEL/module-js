@@ -10,9 +10,13 @@ const $usersList = document.getElementById("users-list");
 //     }
 //   });
 
+let usersOutside = null;
+
 // V2 using axios
 axios.get("https://jsonplaceholder.typicode.com/users").then((response) => {
   const users = response.data;
+  usersOutside = users;
+  console.log("User inside : ", usersOutside);
   for (let user of users) {
     $usersList.innerHTML += CreateUser(user);
   }
@@ -31,3 +35,5 @@ function CreateUser(user) {
     </tr>
   `;
 }
+
+console.log("User outside : ", usersOutside);
