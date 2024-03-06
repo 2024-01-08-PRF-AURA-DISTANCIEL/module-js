@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Todos list</title>
+  </head>
+  
+    <h1>Todos</h1>
+    <h2>Create new task</h2>
+   <form id="addTodoForm">
+    <input id="newTodo" type="text" placeholder="Ex: Write code">
+    <button type="submit">Add</button>
+    <p id="err_todo" class="error"></p>
+   </form>
+
+   <h2>Tasks</h2>
+   <p><input type="checkbox" class="showFinished">Display only finished</p>
+   <p class="unfinishedCounter"></p>
+    <ul id="todos"></ul>
+    <script src="app.js"></script>
+  </body>
+</html>

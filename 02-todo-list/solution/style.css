@@ -1,0 +1,17 @@
+.finished {
+  text-decoration: line-through;
+  color: lightcoral;
+}
+
+.todo {
+  cursor: pointer;
+}
+
+.hidden {
+  display: none;
+}
+
+.error {
+  color: red;
+  width: 300px;
+}
