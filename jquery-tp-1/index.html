@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Calculateur de pourboire</title>
+  </head>
+
+  <body>
+    <form id="tipForm">
+      <input
+        type="number"
+        id="billAmount"
+        placeholder="Montant de la facture"
+      />
+      <select id="tipPercentage">
+        <option value="0.1">10%</option>
+        <option value="0.15" selected>15%</option>
+        <option value="0.2">20%</option>
+      </select>
+      <button type="submit">Calculer le pourboire</button>
+    </form>
+    <div id="tipResult"></div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="./app.js"></script>
+  </body>
+</html>
